@@ -19,7 +19,7 @@ const App = () => {
   const [loading, setLoading] = useState(false);
   const [questions, setQuestions] = useState<QuestionState[]>([]);
   const [number, setNumber] = useState(0);
-  const [userAnswer, setUserAnswer] = useState<AnswerObject[]>([]);
+  const [userAnswers, setUserAnswers] = useState<AnswerObject[]>([]);
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(true);
 
@@ -35,19 +35,37 @@ const App = () => {
     setQuestions(newQuestions);
     console.log(newQuestions);
     setScore(0);
-    setUserAnswer([]);
+    setUserAnswers([]);
     setNumber(0);
     setLoading(false);
   };
 
-  const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {};
+  const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (!gameOver) {
+      //Risposta dell'utente
+      const answer = e.currentTarget.value;
+      // controllo che la risposta dell'utente sia quella corretta
+      const correct = questions[number].correct_answer === answer;
+      // aggiorno lo score se la risposta coincide
+      if (correct) setScore((prev) => prev + 1);
+      // salvo la risposta
+      const answerObject = {
+        question: questions[number].question,
+        answer,
+        correct,
+        correctAnswer: questions[number].correct_answer,
+      };
+
+      setUserAnswers((prev) => [...prev, answerObject]);
+    }
+  };
 
   const nextQuestion = () => {};
 
   return (
     <div className="App">
       <h1>React Quiz App</h1>
-      {gameOver || userAnswer.length === TOTAL_QUESTIONS ? (
+      {gameOver || userAnswers.length === TOTAL_QUESTIONS ? (
         <button className="start" onClick={startTrivia}>
           Start
         </button>
@@ -61,14 +79,14 @@ const App = () => {
           totalQuestions={TOTAL_QUESTIONS}
           question={questions[number].question}
           answers={questions[number].answers}
-          userAnswer={userAnswer ? userAnswer[number] : undefined}
+          userAnswer={userAnswers ? userAnswers[number] : undefined}
           callback={checkAnswer}
         />
       )}
 
       {!gameOver &&
       !loading &&
-      userAnswer.length === number + 1 &&
+      userAnswers.length === number + 1 &&
       number !== TOTAL_QUESTIONS - 1 ? (
         <button className="next" onClick={nextQuestion}>
           Next Question
