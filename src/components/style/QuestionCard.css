@@ -5,6 +5,7 @@
   text-align: center;
   padding: 2rem;
   border-radius: 1rem;
+  margin-bottom: 5rem;
 }
 
 .progress-bar {
@@ -18,7 +19,7 @@
 
 .progress-fill {
   height: 100%;
-  background-color: lightblue;
+  background-color: gold;
   transition: width 0.3s ease-in-out;
 }
 
@@ -55,7 +56,7 @@
 }
 
 .answers button:not(:disabled):hover {
-  background-color: lightblue;
+  background-color: gold;
 }
 
 
