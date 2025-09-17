@@ -6,7 +6,7 @@ import QuestionCard from "./components/QuestionCard";
 //Types
 import { type QuestionState, Difficulty } from "./API";
 
-type AnswerObject = {
+export type AnswerObject = {
   question: string;
   answer: string;
   correct: boolean;
@@ -60,7 +60,15 @@ const App = () => {
     }
   };
 
-  const nextQuestion = () => {};
+  const nextQuestion = () => {
+    const nextQuestion = number + 1;
+
+    if (nextQuestion === TOTAL_QUESTIONS) {
+      setGameOver(true);
+    } else {
+      setNumber(nextQuestion);
+    }
+  };
 
   return (
     <div className="App">
@@ -71,7 +79,7 @@ const App = () => {
         </button>
       ) : null}
 
-      {!gameOver && <p className="score">Score:</p>}
+      {!gameOver && <p className="score">Score: {score}</p>}
       {loading && <p>Loading Questions ...</p>}
       {!loading && !gameOver && (
         <QuestionCard
