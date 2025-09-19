@@ -1,69 +1,75 @@
-# React + TypeScript + Vite
+# React TS Quiz App 🎯
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Una semplice applicazione quiz realizzata con **React + TypeScript**. Consente di interrogarsi su domande multiple prese dall'api di **opentdb**, scegliere una risposta, e visualizzare immediatamente se è **corretta** o **sbagliata**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🧰 Tecnologie usate
 
-## Expanding the ESLint configuration
+- React
+- TypeScript
+- Vite
+- CSS
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🚀 Come far partire il progetto
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+1. Clona questa repository
+   ```bash
+   git clone git@github.com:FedericoPiazzolla/react-ts-quiz-app.git
+   ```
+2. Entra nella cartella del progetto
+   ```bash
+   cd react-ts-quiz-app
+   ```
+3. Installa le dipendenze
+   ```bash
+     npm install
+   ```
+4. Avvia il server di sviluppo
+   ```bash
+   npm run dev
+   ```
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🔍 Cosa fa l’app
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- Permette di iniziare un quiz con un numero fisso di domande
+- Mostra una domanda per volta
+- Quando l’utente seleziona una risposta:
+  - disabilita i pulsanti per evitare altri clic
+  - evidenzia la risposta scelta come **corretta (verde)** o **sbagliata (rosso)**
+- Barra di progresso che indica a che punto sei nel quiz
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
+
+## 📸 Screenshots
+
+| Stato              | Screenshot                                                                              |
+| ------------------ | --------------------------------------------------------------------------------------- |
+| Inizio quiz        | ![Inizio quiz](./src/assets/image/Screenshot%202025-09-19%20alle%2016.49.51.png)        |
+| Risposta corretta  | ![Risposta corretta](./src/assets/image/Screenshot%202025-09-19%20alle%2016.50.03.png)  |
+| Risposta sbagliata | ![Risposta sbagliata](./src/assets/image/Screenshot%202025-09-19%20alle%2016.50.24.png) |
+
+---
+
+## 🧠 Cosa ho imparato / miglioramenti futuri
+
+- Gestione dello stato con React + TypeScript
+- Uso di props e funzioni callback
+- Condizionali nel rendering e gestione di eventi
+
+**Migliorie possibili:**
+
+- Aggiungere feedback sonoro / animazioni
+- Aggiungere gestione multi-livello di difficoltà
+- Salvare i punteggi passati
+- Miglioramenti nell’interfaccia utente
+
+---
+
+## 📄 Licenza
+
+Questo progetto è open source e può essere usato liberamente.
